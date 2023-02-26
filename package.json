@@ -1,0 +1,88 @@
+{
+  "name": "voby-demo",
+  "repository": "github:fabiospampinato/voby",
+  "description": "A high-performance framework with fine-grained observable-based reactivity for building rich applications.",
+  "version": "0.44.0",
+  "type": "module",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./jsx-runtime": {
+      "import": "./dist/jsx/runtime.js",
+      "types": "./dist/jsx/runtime.d.ts"
+    },
+    "./jsx-dev-runtime": {
+      "import": "./dist/jsx/runtime.js",
+      "types": "./dist/jsx/runtime.d.ts"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "jsx-runtime": [
+        "./dist/jsx/runtime.d.ts"
+      ],
+      "jsx-dev-runtime": [
+        "./dist/jsx/runtime.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "clean": "tsex clean",
+    "dev:benchmark": "cd demo/benchmark && pnpm i && pnpm update && pnpm run dev",
+    "prod:benchmark": "cd demo/benchmark && pnpm i && pnpm update && pnpm run prod",
+    "dev:boxes": "cd demo/boxes && pnpm i && pnpm update && pnpm run dev",
+    "prod:boxes": "cd demo/boxes && pnpm i && pnpm update && pnpm run prod",
+    "dev:clock": "cd demo/clock && pnpm i && pnpm update && pnpm run dev",
+    "prod:clock": "cd demo/clock && pnpm i && pnpm update && pnpm run prod",
+    "dev:counter": "cd demo/counter && pnpm i && pnpm update && pnpm run dev",
+    "prod:counter": "cd demo/counter && pnpm i && pnpm update && pnpm run prod",
+    "dev:emoji_counter": "cd demo/emoji_counter && pnpm i && pnpm update && pnpm run dev",
+    "prod:emoji_counter": "cd demo/emoji_counter && pnpm i && pnpm update && pnpm run prod",
+    "dev:html": "cd demo/html && pnpm i && pnpm update && pnpm run dev",
+    "prod:html": "cd demo/html && pnpm i && pnpm update && pnpm run prod",
+    "dev:hyperscript": "cd demo/hyperscript && pnpm i && pnpm update && pnpm run dev",
+    "prod:hyperscript": "cd demo/hyperscript && pnpm i && pnpm update && pnpm run prod",
+    "dev:playground": "cd demo/playground && pnpm i && pnpm update && pnpm run dev",
+    "prod:playground": "cd demo/playground && pnpm i && pnpm update && pnpm run prod",
+    "dev:spiral": "cd demo/spiral && pnpm i && pnpm update && pnpm run dev",
+    "prod:spiral": "cd demo/spiral && pnpm i && pnpm update && pnpm run prod",
+    "dev:store_counter": "cd demo/store_counter && pnpm i && pnpm update && pnpm run dev",
+    "prod:store_counter": "cd demo/store_counter && pnpm i && pnpm update && pnpm run prod",
+    "dev:triangle": "cd demo/triangle && pnpm i && pnpm update && pnpm run dev",
+    "prod:triangle": "cd demo/triangle && pnpm i && pnpm update && pnpm run prod",
+    "dev:uibench": "cd demo/uibench && pnpm i && pnpm update && pnpm run dev",
+    "prod:uibench": "cd demo/uibench && pnpm i && pnpm update && pnpm run prod",
+    "dev": "pnpm run dev:playground",
+    "prod": "pnpm run prod:playground",
+    "prepublishOnly": "pnpm run clean && pnpm run compile"
+  },
+  "keywords": [
+    "ui",
+    "framework",
+    "reactive",
+    "observable",
+    "fast",
+    "performant",
+    "performance",
+    "small",
+    "fine-grained",
+    "updates"
+  ],
+  "dependencies": {
+    "htm": "^3.1.1",
+    "oby": "^12.5.4",
+    "three": "0.111.0",
+    "voby": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^18.13.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.1.1"
+  }
+}
