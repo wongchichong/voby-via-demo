@@ -67,19 +67,22 @@
         //         "../voby/dist/jsx/*"
         //     ],
         // },
-        "typeRoots": [
-            "../voby/src",
-            "voby"
-        ],
-        "types": [
-            "jsx"
-        ]
+        // "typeRoots": [
+        //     "../voby/src",
+        //     "voby"
+        // ],
+        // "types": [
+        //     "jsx"
+        // ]
     },
-    "references": [
-        {
-            "path": "../voby"
-        }
-    ],
+    "exclude": [
+        "vite.config.ts"
+    ]
+    // "references": [
+    //     {
+    //         "path": "../voby"
+    //     }
+    // ],
     // "include": [
     //   "../voby/src/jsx"
     // ]

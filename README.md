@@ -19,3 +19,5 @@
 
 # [Voby](https://voby.dev) Demo Projects
 
+In demo/playground, server render not implement yet. Not plan to render via portal.
+

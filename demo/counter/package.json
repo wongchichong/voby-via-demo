@@ -1,14 +1,15 @@
 {
-  "private": true,
-  "name": "counter",
-  "type": "module",
-  "scripts": {
-    "dev": "vite --force --mode dev",
-    "prod": "vite --force",
-    "build": "vite build"
-  },
-  "dependencies": {
-    "vite": "^4.1.4",
-    "voby": "workspace:*"
-  }
+    "private": true,
+    "name": "counter",
+    "type": "module",
+    "scripts": {
+        "dev": "vite --force --mode dev",
+        "prod": "vite --force",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "vite": "^4.1.4",
+        "voby": "workspace:../../../voby",
+        "via": "workspace:../../../via"
+    }
 }

@@ -14,7 +14,7 @@
         "inlineSources": false,
         // "isolatedModules": true,
         "jsx": "preserve",
-        "jsxImportSource": "voby/via",
+        "jsxImportSource": "voby/ssr",
         "lib": [
             "dom",
             "esnext"
@@ -67,19 +67,19 @@
         //         "../voby/dist/jsx/*"
         //     ],
         // },
-        "typeRoots": [
-            "../voby/src",
-            "voby"
-        ],
-        "types": [
-            "jsx"
-        ]
+        // "typeRoots": [
+        //     "../voby/src",
+        //     "voby"
+        // ],
+        // "types": [
+        //     "jsx"
+        // ]
     },
-    "references": [
-        {
-            "path": "../voby"
-        }
-    ],
+    // "references": [
+    //     {
+    //         "path": "../voby"
+    //     }
+    // ],
     // "include": [
     //   "../voby/src/jsx"
     // ]

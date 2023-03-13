@@ -1,25 +1,20 @@
+//@ts-nocheck
+"use strict"
 
-/* IMPORT */
-import { $, render, useEffect } from 'voby'
-import type { JSX } from 'voby'
+import 'via/controller'
+import 'via/receiver'
+import MyWorker from './worker?worker'
 
-/* MAIN */
+let worker = null
 
-const Counter = (): JSX.Element => {
+document.addEventListener("DOMContentLoaded", function () {
+    // Create worker
+    worker = new MyWorker()
 
-  const value = $(0)
+    // Hook up Via's messages with the worker's postMessage bridge
+    worker.onmessage = (e => ViaReceiver.OnMessage(e.data))
+    ViaReceiver.postMessage = (data => worker.postMessage(data))
 
-  const increment = () => value(prev => prev + 1)
-  const decrement = () => value(prev => prev - 1)
-
-  return (
-    <>
-      <h1>Counter</h1>
-      <p>{value}</p>
-      <button onClick={increment}>+</button>
-      <button onClick={decrement}>-</button>
-    </>
-  )
-}
-
-render(<Counter />, document.getElementById('app'))
+    // Start the worker
+    worker.postMessage("start")
+})
