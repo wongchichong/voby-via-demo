@@ -48,42 +48,10 @@
         "noImplicitAny": false,
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
-        "rootDir": "./demo",
+        "rootDir": ".",
         "composite": true,
-        // "paths": {
-        //     // "*": [
-        //     //   "../voby/src"
-        //     // ],
-        //     // "voby": [
-        //     //   "../voby/src"
-        //     // ],
-        //     // "voby/*": [
-        //     //   "../voby/src/*"
-        //     // ],
-        //     "voby/jsx-runtime": [
-        //         "../voby/dist/jsx"
-        //     ],
-        //     "voby/jsx-runtime/*": [
-        //         "../voby/dist/jsx/*"
-        //     ],
-        // },
-        // "typeRoots": [
-        //     "../voby/src",
-        //     "voby"
-        // ],
-        // "types": [
-        //     "jsx"
-        // ]
     },
     "exclude": [
         "vite.config.ts"
     ]
-    // "references": [
-    //     {
-    //         "path": "../voby"
-    //     }
-    // ],
-    // "include": [
-    //   "../voby/src/jsx"
-    // ]
 }
