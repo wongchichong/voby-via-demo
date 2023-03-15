@@ -10,7 +10,7 @@ import { Scene } from 'three/src/scenes/Scene'
 import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer'
 
 import { render, } from 'voby/via'
-import { $, useAnimationLoop, useEffect, useMemo } from 'voby'
+import { $, useAnimationLoop, useEffect, useMemo, usePromise } from 'voby'
 import type { JSX, Observable, ObservableReadonly, } from 'voby'
 
 
@@ -152,24 +152,27 @@ const ThreeScene = (camera: PerspectiveCamera, light: DirectionalLight, meshes: 
 
     useEffect(() => {
 
-        const onResize = () => {
+        (async () => {
+            const onResize = async () => {
+                const innerWidth = await get(window.innerWidth) as number
+                const innerHeight = await get(window.innerHeight) as number
+                camera.aspect = innerWidth / innerHeight
+                camera.updateProjectionMatrix()
 
-            camera.aspect = window.innerWidth / window.innerHeight
-            camera.updateProjectionMatrix()
+                renderer.setSize(innerWidth, innerHeight)
 
-            renderer.setSize(window.innerWidth, window.innerHeight)
+            }
 
-        }
+            await onResize()
 
-        onResize()
+            window.addEventListener('resize', onResize)
+        })()
 
-        window.addEventListener('resize', onResize)
+        // return () => {
 
-        return () => {
+        //     window.removeEventListener('resize', onResize)
 
-            window.removeEventListener('resize', onResize)
-
-        }
+        // }
 
     })
 
@@ -177,9 +180,10 @@ const ThreeScene = (camera: PerspectiveCamera, light: DirectionalLight, meshes: 
 
 }
 
-const ThreePerspectiveCamera = (location: [number, number, number]): PerspectiveCamera => {
-
-    const aspect = window.innerWidth / window.innerHeight
+const ThreePerspectiveCamera = async (location: [number, number, number]): Promise<PerspectiveCamera> => {
+    const innerWidth = await get(window.innerWidth) as number
+    const innerHeight = await get(window.innerHeight) as number
+    const aspect = innerWidth / innerHeight
 
     const camera = new PerspectiveCamera(106, aspect, 1, 1000)
 
@@ -228,10 +232,10 @@ const Controls = ({ count, onInput }: { count: Observable<number>, onInput: ((ev
 
 const Rotations = ({ rotations }: { rotations: ObservableReadonly<Rotation[]> }): JSX.Element => {
 
-    const camera = ThreePerspectiveCamera([0, 0, 3.2])
+    const camera = usePromise(ThreePerspectiveCamera([0, 0, 3.2]))
     const light = ThreeDirectionalLight([-5, 0, -10])
     const meshes = useMemo(() => rotations().map(ThreeMesh))
-    const scene = ThreeScene(camera, light, meshes)
+    const scene = ThreeScene(camera().value, light, meshes)
 
     return (
         <div class="container">

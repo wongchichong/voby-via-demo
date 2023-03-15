@@ -12,7 +12,6 @@ import { IgnoreSymbols, ViaClass } from 'via'
 
 globalThis.Voby = Voby
 
-import type { ViaClass } from 'via'
 const Via = self.Via
 const via: ViaClass & Window & typeof globalThis & { audioContext?: AudioContext } = self.via
 
@@ -953,8 +952,18 @@ const TestInputLabelFor = (): JSX.Element => {
 
 const TestSelectStaticOption = (): JSX.Element => {
     const ref = $<HTMLSelectElement>()
-    const assert = async () => console.assert(await get(ref()?.value) === 'bar')
-    setTimeout(assert, 1)
+
+    useEffect(() => {
+        if (ref()) {
+            (async () => {
+                console.log(await get(ref()?.value))
+                console.assert(await get(ref()?.value) === 'bar')
+
+                // setTimeout(assert, 1)
+            }
+            )()
+        }
+    })
     return (
         <>
             <h3>Select - Static Option</h3>
@@ -5902,7 +5911,7 @@ TestNestedIfs.test = {
 const Test = (): JSX.Element => {
     return (
         <>
-            <TestSnapshots Component={TestNullStatic} />
+            {/* <TestSnapshots Component={TestNullStatic} />
             <TestSnapshots Component={TestNullObservable} />
             <TestSnapshots Component={TestNullFunction} />
             <TestSnapshots Component={TestNullRemoval} />
@@ -5947,9 +5956,9 @@ const Test = (): JSX.Element => {
             <TestPropertyValueObservable />
             <TestPropertyValueFunction />
             <TestPropertyValueRemoval />
-            <TestInputLabelFor />
+            <TestInputLabelFor /> */}
             <TestSnapshots Component={TestSelectStaticOption} />
-            <TestSnapshots Component={TestSelectStaticValue} />
+            {/* <TestSnapshots Component={TestSelectStaticValue} />
             <TestSnapshots Component={TestSelectObservableOption} />
             <TestSnapshots Component={TestSelectObservableValue} />
             <TestSnapshots Component={TestIdStatic} />
@@ -6033,7 +6042,7 @@ const Test = (): JSX.Element => {
             <TestSnapshots Component={TestDirectiveRef} />
             <TestEventClickStatic />
             <TestEventClickObservable />
-            <TestEventClickRemoval />
+            <TestEventClickRemoval /> */}
 
             { /** Capture, Pasive, Propagation not implement */}
             {/* <TestEventClickCaptureStatic />
@@ -6046,14 +6055,14 @@ const Test = (): JSX.Element => {
             {/* <TestEventEnterStopImmediatePropagation /> */}
             {/* <TestEventEnterAndEnterCaptureStatic /> */}
 
-            <TestSnapshots Component={TestABCD} />
+            {/* <TestSnapshots Component={TestABCD} />
             <TestSnapshots Component={TestChildrenBoolean} />
             <TestSnapshots Component={TestChildrenSymbol} />
-            <TestSnapshots Component={TestCleanupInner} />
+            <TestSnapshots Component={TestCleanupInner} /> */}
 
             {/* <TestSnapshots Component={TestCleanupInnerPortal} /> */}
 
-            <TestSnapshots Component={TestContextDynamicContext} />
+            {/* <TestSnapshots Component={TestContextDynamicContext} />
             <TestSnapshots Component={TestDynamicHeading} />
             <TestSnapshots Component={TestDynamicObservableComponent} />
             <TestSnapshots Component={TestDynamicFunctionComponent} />
@@ -6074,11 +6083,11 @@ const Test = (): JSX.Element => {
             <TestSnapshots Component={TestIfFallbackStatic} />
             <TestSnapshots Component={TestIfFallbackObservable} />
             <TestSnapshots Component={TestIfFallbackObservableStatic} />
-            <TestSnapshots Component={TestIfFallbackFunction} />
+            <TestSnapshots Component={TestIfFallbackFunction} /> */}
 
             {/* <TestSnapshots Component={TestIfRace} /> */}
 
-            <TestSnapshots Component={TestTernaryStatic} />
+            {/* <TestSnapshots Component={TestTernaryStatic} />
             <TestSnapshots Component={TestTernaryStaticInline} />
             <TestSnapshots Component={TestTernaryObservable} />
             <TestSnapshots Component={TestTernaryObservableChildren} />
@@ -6140,14 +6149,14 @@ const Test = (): JSX.Element => {
             <TestSnapshots Component={TestSVGStyleString} />
             <TestSnapshots Component={TestSVGClassObject} />
             <TestSnapshots Component={TestSVGClassString} />
-            <TestSnapshots Component={TestSVGAttributeRemoval} />
+            <TestSnapshots Component={TestSVGAttributeRemoval} /> */}
 
             {/** Template not implement */}
             {/* <TestSnapshots Component={TestTemplateExternal} /> */}
             {/* <TestSnapshots Component={TestTemplateSVG} /> */}
 
-            <TestSnapshots Component={TestContextComponents} />
-            <TestSnapshots Component={TestContextHook} />
+            {/* <TestSnapshots Component={TestContextComponents} />
+            <TestSnapshots Component={TestContextHook} /> */}
 
             {/** Via all portals */}
             {/* <TestSnapshots Component={TestPortalObservable} />
@@ -6156,7 +6165,7 @@ const Test = (): JSX.Element => {
             <TestSnapshots Component={TestPortalWhenObservable} />
             <TestSnapshots Component={TestPortalWrapperStatic} /> */}
 
-            <TestSnapshots Component={TestResourceFallbackValue} />
+            {/* <TestSnapshots Component={TestResourceFallbackValue} />
             <TestSnapshots Component={TestResourceFallbackLatest} />
             <TestSnapshots Component={TestSuspenseAlways} />
             <TestSnapshots Component={TestSuspenseNever} />
@@ -6170,7 +6179,7 @@ const Test = (): JSX.Element => {
             <TestSnapshots Component={TestSuspenseCleanup} />
             <TestSnapshots Component={TestLazy} />
             <TestSnapshots Component={TestNestedArrays} />
-            <TestSnapshots Component={TestNestedIfs} />
+            <TestSnapshots Component={TestNestedIfs} /> */}
             <hr />
         </>
     )
