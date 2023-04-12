@@ -1,8 +1,8 @@
 
 /* IMPORT */
 import { render } from 'voby/via'
-import { $, useAnimationLoop } from 'voby'
-import type { JSX, Observable } from 'voby'
+import { $, useAnimationLoop } from 'voby/via'
+import type { JSX, Observable } from 'voby/via'
 
 
 import type { ViaClass } from 'via'

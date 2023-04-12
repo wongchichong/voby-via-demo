@@ -11,7 +11,7 @@ import { WebGLRenderer } from 'three/src/renderers/WebGLRenderer'
 
 import { render, } from 'voby/via'
 import { $, useAnimationLoop, useEffect, useMemo, usePromise } from 'voby'
-import type { JSX, Observable, ObservableReadonly, } from 'voby'
+import type { JSX, Observable, ObservableReadonly, } from 'voby/via'
 
 
 /* IMPORT */

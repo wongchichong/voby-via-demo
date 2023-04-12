@@ -5,7 +5,7 @@
 import { useMemo } from 'voby'
 import { render, } from 'voby/via'
 import { $, useSelector, For } from 'voby'
-import type { FunctionMaybe, Observable, ObservableMaybe, JSX } from 'voby'
+import type { FunctionMaybe, Observable, ObservableMaybe, JSX } from 'voby/via'
 import type { IObservable } from 'oby'
 
 
